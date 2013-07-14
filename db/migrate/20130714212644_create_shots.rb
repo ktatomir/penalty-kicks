@@ -3,8 +3,8 @@ class CreateShots < ActiveRecord::Migration
     create_table :shots do |t|
       t.string :type
       t.references :game
-      t.integer :x_pos, default: 1
-      t.integer :y_pos, default: 1
+      t.integer :x_pos
+      t.integer :y_pos
       t.timestamps
     end
     add_index :shots, :game_id

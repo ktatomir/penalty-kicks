@@ -5,10 +5,11 @@ class ShotsController < ApplicationController
     server_pos = [x,y]
     player_pos = [params[:shot][:x_pos], params[:shot][:y_pos]]
     shot = @game.check_if_goal(server_pos, player_pos)
-    if shot
+    if !shot.id.nil?
+      @shots = @game.shots
       respond_to do |format|
         format.html { redirect_to @game }
-        format.js { @shots = @game.shots }
+        format.js
       end
     else
       flash[:error] = "Kick failed."

@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(:version => 20130714212644) do
   create_table "shots", :force => true do |t|
     t.string   "type"
     t.integer  "game_id"
-    t.integer  "x_pos",      :default => 1
-    t.integer  "y_pos",      :default => 1
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.integer  "x_pos"
+    t.integer  "y_pos"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "shots", ["game_id"], :name => "index_shots_on_game_id"
