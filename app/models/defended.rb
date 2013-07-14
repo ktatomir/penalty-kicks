@@ -1,0 +1,3 @@
+class Defended < Shot
+  
+end
