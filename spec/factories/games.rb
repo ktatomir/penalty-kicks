@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :game do
-    player_name "MyString"
-    scores 1
+    sequence(:player_name) { |n| "Player_#{n}" }
+    scores 0
   end
 end

@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :shot do
-    type ""
-    reference ""
-    x_pos 1
-    y_pos 1
+    game
+    sequence(:type) {|n| ['Goal', 'Defended'].sample }
+    sequence(:x_pos) {|n| rand(1..4) }
+    sequence(:y_pos) {|n| rand(1..4) }
   end
 end
