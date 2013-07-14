@@ -1,0 +1,13 @@
+.row-fluid
+	.span2
+	.span8
+		%h1 Shot!
+		= form_for [@game, @shot], html: {class: 'form-inline' }, remote: true do |f|
+			= f.hidden_field :game_id, value: @game.id
+			= f.text_field :x_pos, placeholder: "x pos"
+			= f.text_field :y_pos, placeholder: "y pos"
+			= f.submit "Kick the ball", class: "btn btn-primary"
+		.clearfix
+		%h3 Already kicked:
+		#shots
+			= render 'shots/shots_table', shots: @shots

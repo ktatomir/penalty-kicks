@@ -1,0 +1,9 @@
+%table
+	- shots.each do |s|
+		%tr
+			%td
+				= s.x_pos
+				x
+				= s.y_pos
+			%td
+				= s.class.name

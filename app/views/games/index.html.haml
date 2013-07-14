@@ -1,2 +1,10 @@
-%h1 Games#index
-%p Find me in app/views/games/index.html.haml
+.hero-unit
+	%h1 Pentaly kicks
+	%p shot some goals and win the game
+
+#new_game
+	.row-fluid
+		.span2
+		.span8
+			=form_for @game do |f|
+				= f.submit "Play now", class: "btn btn-large btn-primary", style: "width:100%"
