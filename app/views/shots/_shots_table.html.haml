@@ -1,4 +1,4 @@
-%table
+%table.table.table-striped
 	- shots.each do |s|
 		%tr
 			%td
@@ -6,4 +6,7 @@
 				x
 				= s.y_pos
 			%td
-				= s.class.name
+				- if s.class.name == "Goal"  
+					%b(style="color: red")= s.class.name
+				- else
+					= s.class.name

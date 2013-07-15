@@ -1,1 +1,10 @@
-$('#shots').html(<%=j render 'shots/shots_table', shots: @shots %>);
+<% if @shot.errors.any? %>
+	alert('<%= @shot.errors.full_messages.join(", ").html_safe %>');
+<% else %>
+	$('#shots').html('<%=j render 'shots/shots_table', shots: @shots %>');
+	$('#scores_counter').html('<%= @game.scores %>');
+	if ($('#shots tr').length == 5) {
+		$('#shot_new').hide();
+  		$('#player_name').show();
+	}
+<% end %>

@@ -1,13 +1,22 @@
 .row-fluid
-	.span2
-	.span8
-		%h1 Shot!
-		= form_for [@game, @shot], html: {class: 'form-inline' }, remote: true do |f|
-			= f.hidden_field :game_id, value: @game.id
-			= f.text_field :x_pos, placeholder: "x pos"
-			= f.text_field :y_pos, placeholder: "y pos"
-			= f.submit "Kick the ball", class: "btn btn-primary"
-		.clearfix
-		%h3 Already kicked:
-		#shots
-			= render 'shots/shots_table', shots: @shots
+  .span2
+  .span8
+    #shot_new{style: @game.shots.count == 5 ? "display:none" : ""}
+      %h1 Shot!
+      = form_for [@game, Shot.new], html: {class: 'form-inline' }, remote: true do |f|
+        = f.hidden_field :game_id, value: @game.id
+        = f.text_field :x_pos, placeholder: "x pos from 1 to 4"
+        = f.text_field :y_pos, placeholder: "y pos from 1 to 4"
+        = f.submit "Kick the ball", class: "btn btn-primary"
+    #player_name{style: @game.shots.count == 5 && !@game.player_name ? "" : "display: none"}
+      %h1 Save your scores
+      = form_for @game, method: :put, html: {class: 'form-inline'} do |f|
+        = f.text_field :player_name, placeholder: "Enter your name"
+        = f.submit "Save highscores", class: "btn btn-primary"
+    .clearfix
+    %h3
+      Scores:
+      %span#scores_counter= @game.scores
+    %h3 Already kicked:
+    #shots
+      = render 'shots/shots_table', shots: @shots
