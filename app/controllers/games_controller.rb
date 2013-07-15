@@ -7,7 +7,6 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @shots = @game.shots
-    @shot = @game.shots.build
   end
   
   def create
@@ -16,6 +15,15 @@ class GamesController < ApplicationController
       redirect_to @game
     else
       render :index
+    end
+  end
+  
+  def update
+    @game = Game.find(params[:id])
+    if @game.update_attributes(params[:game])
+      redirect_to root_path
+    else
+      render :show
     end
   end
 end

@@ -3,8 +3,6 @@ PenaltyKicks::Application.routes.draw do
   namespace :api do
     resources :games do
       resources :shots
-      resources :goals
-      resources :defendends
     end
   end
   
