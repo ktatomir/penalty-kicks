@@ -1,6 +1,6 @@
 PenaltyKicks::Application.routes.draw do
   
-  namespace :api do
+  namespace :api, defaults: {format: :json} do
     resources :games do
       resources :shots
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130714212644) do
+ActiveRecord::Schema.define(:version => 20130717151659) do
 
   create_table "games", :force => true do |t|
     t.string   "player_name"
@@ -21,12 +21,12 @@ ActiveRecord::Schema.define(:version => 20130714212644) do
   end
 
   create_table "shots", :force => true do |t|
-    t.string   "type"
     t.integer  "game_id"
     t.integer  "x_pos"
     t.integer  "y_pos"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "score",      :default => 0
   end
 
   add_index "shots", ["game_id"], :name => "index_shots_on_game_id"

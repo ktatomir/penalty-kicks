@@ -1,11 +1,10 @@
 class Shot < ActiveRecord::Base
-  attr_accessible :reference, :type, :x_pos, :y_pos
+  attr_accessible :x_pos, :y_pos, :score
   
   belongs_to :game
   
   validates_numericality_of :x_pos, :y_pos
   validates_presence_of :game_id
-  validates_inclusion_of :type, in: %w[Goal Defended]
   validates_inclusion_of :x_pos, in: (1..4)
   validates_inclusion_of :y_pos, in: (1..4)
   validate :if_my_game_ended

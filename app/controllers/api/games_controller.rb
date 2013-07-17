@@ -7,8 +7,7 @@ class Api::GamesController < ApplicationController
   
   def show
     @game = Game.find(params[:id])
-    meh = {@game => @game.shots}
-    respond_with meh
+    respond_with [@game, @game.shots]
   end
   
   def create

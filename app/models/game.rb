@@ -17,10 +17,10 @@ class Game < ActiveRecord::Base
 
     def check_if_goal(server_vector, player_vector)
         points = self.scores
-        shot = server_vector == player_vector ? self.defendeds.build(x_pos: player_vector[0], y_pos: player_vector[1]) :
-            self.goals.build(x_pos: player_vector[0], y_pos: player_vector[1])
+        shot = server_vector == player_vector ? self.shots.build(x_pos: player_vector[0], y_pos: player_vector[1]) :
+            self.shots.build(x_pos: player_vector[0], y_pos: player_vector[1], score: 1)
         if shot.save
-          self.update_attribute(:scores, points+1) if shot.class.name == "Goal"
+          self.update_attribute(:scores, points+shot.score)
         end
         shot
     end

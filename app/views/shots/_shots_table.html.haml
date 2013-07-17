@@ -6,7 +6,7 @@
 				x
 				= s.y_pos
 			%td
-				- if s.class.name == "Goal"  
-					%b(style="color: red")= s.class.name
+				- if s.score == 1 
+					%b(style="color: red") Goal
 				- else
-					= s.class.name
+					Defended
